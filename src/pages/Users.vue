@@ -25,7 +25,6 @@ const filters = ref({
 onMounted(() => {
     UserAPI.getUsers()
         .then((response) => {
-            console.log(response)
             if (response.status === 200) {
                 users.value = response.data;
             }
@@ -122,7 +121,7 @@ const saveUser = () => {
                         toast.add({
                             severity: "success",
                             summary: "Successful",
-                            detail: result.data.message,
+                            detail: response.data.message,
                             life: 3000,
                         });
 
@@ -158,7 +157,7 @@ const saveUser = () => {
 
                         const result = response.data;
 
-                        user.value._id = result.data.user._id;
+                        user.value._id = result.data._id;
                         user.value.createdAt = result.data.createdAt;
                         user.value.updatedAt = result.data.updatedAt;
 
@@ -166,7 +165,7 @@ const saveUser = () => {
                         toast.add({
                             severity: "success",
                             summary: "Successful",
-                            detail: result.data.message,
+                            detail: response.data.message,
                             life: 3000,
                         });
 
@@ -440,9 +439,8 @@ const deleteSelectedUsers = () => {
                         <span v-if="user">Are you sure you want to delete the selected users?</span>
                     </div>
                     <template #footer>
-                        <Button label="No" icon="pi pi-times" text @click="deleteUsersDialog = false"
-                            severity="secondary" />
-                        <Button label="Yes" icon="pi pi-check" text @click="deleteSelectedUsers" severity="danger" />
+                        <Button label="No" icon="pi pi-times" @click="deleteUsersDialog = false" severity="secondary" />
+                        <Button label="Yes" icon="pi pi-check" @click="deleteSelectedUsers" severity="danger" />
                     </template>
                 </Dialog>
             </div>

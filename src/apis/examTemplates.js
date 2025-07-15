@@ -24,4 +24,8 @@ export default {
   uploadStudentAnswers(id, payload) {
     return Api.post("exam-templates/" + id + "/student-answers", payload);
   },
+
+  softDeleteExamTemplates(payload) {
+    return Api.put("exam-templates/delete-many", payload);
+  },
 };

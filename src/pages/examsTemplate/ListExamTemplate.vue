@@ -115,12 +115,12 @@ const exportCSV = () => {
 const confirmDeleteSelected = () => {
     deleteRecordDialog.value = true;
 };
-const deleteSelectedUsers = () => {
+const deleteSelectedExamTemplates = () => {
     errors.value = {};
     if (selectedRecords.value.length > 0) {
         const payload = { ids: selectedRecords.value.map((su) => su._id) };
 
-        UserAPI.softDeleteUsers(payload)
+        examTemplateApi.softDeleteExamTemplates(payload)
             .then((response) => {
                 if (response.status === 200) {
                     examTemplates.value = examTemplates.value.filter((val) => !selectedRecords.value.includes(val));
@@ -299,9 +299,9 @@ const listStudentAnswers = (editRecord) => {
                         <span v-if="examTemplate">Are you sure you want to delete the selected exam templates?</span>
                     </div>
                     <template #footer>
-                        <Button label="No" icon="pi pi-times" text @click="deleteRecordDialog = false"
+                        <Button label="No" icon="pi pi-times" @click="deleteRecordDialog = false"
                             severity="secondary" />
-                        <Button label="Yes" icon="pi pi-check" text @click="deleteSelectedUsers" severity="danger" />
+                        <Button label="Yes" icon="pi pi-check" @click="deleteSelectedExamTemplates" severity="danger" />
                     </template>
                 </Dialog>
             </div>
