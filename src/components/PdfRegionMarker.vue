@@ -375,7 +375,7 @@ onMounted(() => {
                         </div>
                         <div class="flex items-center gap-2">
                             <RadioButton v-model="selectedRegion.type" inputId="qr_code" name="regionType"
-                                value="qr code" />
+                                value="qr_code" />
                             <label for="qr_code">qr code</label>
                         </div>
                     </div>
@@ -437,7 +437,7 @@ onMounted(() => {
             <div class="field">
                 <small v-if="submitted && errors.general" class="p-error">{{
                     errors.general
-                }}</small>
+                    }}</small>
             </div>
 
             <template #footer>

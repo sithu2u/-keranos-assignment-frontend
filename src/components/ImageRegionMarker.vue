@@ -387,7 +387,7 @@ onMounted(() => {
                         </div>
                         <div class="flex items-center gap-2">
                             <RadioButton v-model="selectedRegion.type" inputId="qr_code" name="regionType"
-                                value="qr code" />
+                                value="qr_code" />
                             <label for="qr_code">qr code</label>
                         </div>
                     </div>
